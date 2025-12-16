@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
-    background: linear-gradient(135deg, #165e31 0%, #1a472a 50%, #0d2817 100%);
+    background: linear-gradient(135deg, #343434 0%, #202020 50%, #000000 100%);
 }
 
 main {

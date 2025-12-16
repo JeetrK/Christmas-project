@@ -1,8 +1,14 @@
+// Play button
 document.getElementById('Switch').addEventListener('click', function() {
     if (document.body.classList.contains('hanukkah')) {
         window.location.href = 'GameTwo.html';
     } else {
-        window.location.href = 'GameOne.html';
+        // Check if Unlimited mode is active
+        if (window.unlimitedMode) {
+            window.location.href = 'unlimited.html';
+        } else {
+            window.location.href = 'GameOne.html';
+        }
     }
 });
 
@@ -38,4 +44,13 @@ document.getElementById('ThemeToggle').addEventListener('click', function() {
     } else {
         localStorage.setItem('theme', 'christmas');
     }
+});
+
+// Unlimited button logic
+window.unlimitedMode = false; // global flag for Unlimited mode
+const unlimitedBtn = document.getElementById('UnlimitedBtn');
+unlimitedBtn.addEventListener('click', function() {
+
+    // Redirect to unlimited.html
+    window.location.href = 'unlimited.html';
 });
