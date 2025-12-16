@@ -7,11 +7,55 @@ body {
     align-items: center;
     flex-direction: column;
     height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #165e31 0%, #1a472a 50%, #0d2817 100%);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+h1 {
+    margin: 0;
+    margin-bottom: 40px;
+    color: #FFD700;
+    font-size: 48px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+#Switch {
+    font-size: 48px;
+    padding: 30px 80px;
+    min-width: 300px;
+    background: linear-gradient(135deg, #dc143c 0%, #ff6347 100%);
+    color: white;
+    border: 3px solid #FFD700;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
+}
+
+#Switch:hover {
+    background: linear-gradient(135deg, #ff6347 0%, #dc143c 100%);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(220, 20, 60, 0.6);
+}
+
+#Switch:active {
+    transform: scale(0.98);
 }
 
 #gameArea {
     width: 800px;
-    height: 100px;
+    height: 70vh;
     border: 2px solid black;
     position: relative;
     margin: 0;
@@ -23,8 +67,9 @@ body {
     height: 50px;
     background-color: red;
     position: absolute;
-    top: 25px;
+    top: 50%;
     left: 0px;
+    transform: translateY(-50%);
 }
 
 #target {
@@ -32,8 +77,9 @@ body {
     height: 50px;
     background-color: green;
     position: absolute;
-    top: 25px;
+    top: 50%;
     left: 375px; /* Center of the game area */
+    transform: translateY(-50%);
 }
 
 #winCount {
@@ -42,14 +88,89 @@ body {
 }
 
 #message {
-    font-size: 32px;
-    color: blue;
+    font-size: 48px;
+    color: #FFD700;
     margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    font-weight: bold;
 }
 
 #restart {
     font-size: 20px;
     padding: 10px 20px;
     margin-top: 20px;
+    margin-bottom: 15px;
     cursor: pointer;
+}
+
+#restartHint {
+    margin-bottom: 15px;
+}
+
+#winButtons {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#homeBtn, #playAgainBtn {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+/* Theme Toggle Button */
+#ThemeToggle {
+    font-size: 20px;
+    padding: 15px 30px;
+    margin-top: 30px;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #333;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+#ThemeToggle:hover {
+    background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+}
+
+#ThemeToggle:active {
+    transform: scale(0.98);
+}
+
+/* Hanukkah Theme */
+body.hanukkah {
+    background: linear-gradient(135deg, #0056b3 0%, #003d82 50%, #001f4d 100%);
+}
+
+body.hanukkah h1 {
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+body.hanukkah #Switch {
+    background: linear-gradient(135deg, #0056b3 0%, #004a9f 100%);
+    border: 3px solid #FFFFFF;
+    color: white;
+}
+
+body.hanukkah #Switch:hover {
+    background: linear-gradient(135deg, #004a9f 0%, #0056b3 100%);
+}
+
+body.hanukkah #ThemeToggle {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E8E8E8 100%);
+    color: #0056b3;
+    border: 2px solid #0056b3;
+}
+
+body.hanukkah #ThemeToggle:hover {
+    background: linear-gradient(135deg, #E8E8E8 0%, #FFFFFF 100%);
 }

@@ -12,6 +12,10 @@ const gameArea = document.getElementById('gameArea');
 const winDisplay = document.getElementById('winCount');
 const message = document.getElementById('message');
 const restartBtn = document.getElementById('restart');
+const restartHint = document.getElementById('restartHint');
+const winButtons = document.getElementById('winButtons');
+const homeBtn = document.getElementById('homeBtn');
+const playAgainBtn = document.getElementById('playAgainBtn');
 
 // Function to move the object
 function move() {
@@ -63,6 +67,7 @@ function checkCollision() {
 
         if (winCount >= 8) {
             message.textContent = 'You Win!';
+            winButtons.style.display = 'block';
             moving = false; // Stop the game
         } else {
             // Continue moving for next attempt
@@ -72,18 +77,39 @@ function checkCollision() {
         // Lose
         message.textContent = 'You Lose!';
         restartBtn.style.display = 'block';
+        restartHint.style.display = 'block';
         moving = false;
     }
 }
 
-// Restart button event
-restartBtn.addEventListener('click', function() {
+// Restart function
+function restartGame() {
     winCount = 0;
     speed = 5; // Reset speed
     winDisplay.textContent = 'Wins: 0';
     message.textContent = '';
     restartBtn.style.display = 'none';
+    restartHint.style.display = 'none';
+    winButtons.style.display = 'none';
     moving = true;
     position = 0;
     direction = 1;
+}
+
+// Restart button event
+restartBtn.addEventListener('click', restartGame);
+
+// Home button event
+homeBtn.addEventListener('click', function() {
+    window.location.href = 'index.html';
+});
+
+// Play Again button event
+playAgainBtn.addEventListener('click', restartGame);
+
+// Listen for Ctrl key to restart when lose screen is shown
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && restartBtn.style.display === 'block') {
+        restartGame();
+    }
 });
