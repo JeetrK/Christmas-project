@@ -58,6 +58,7 @@ function checkCollision() {
     if (overlap) {
         // Win
         winCount++;
+        speed += 2; // Increase speed after each win
         winDisplay.textContent = 'Wins: ' + winCount;
 
         if (winCount >= 8) {
@@ -78,6 +79,7 @@ function checkCollision() {
 // Restart button event
 restartBtn.addEventListener('click', function() {
     winCount = 0;
+    speed = 5; // Reset speed
     winDisplay.textContent = 'Wins: 0';
     message.textContent = '';
     restartBtn.style.display = 'none';
