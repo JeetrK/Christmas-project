@@ -23,7 +23,7 @@ main {
 h1 {
     margin: 0;
     margin-bottom: 40px;
-    color: #FFD700;
+    color: white;
     font-size: 48px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     letter-spacing: 2px;
@@ -35,7 +35,7 @@ h1 {
     min-width: 300px;
     background: linear-gradient(135deg, #dc143c 0%, #ff6347 100%);
     color: white;
-    border: 3px solid #FFD700;
+    border: 3px solid white;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
@@ -103,6 +103,7 @@ h1 {
     margin-top: 20px;
     margin-bottom: 15px;
     cursor: pointer;
+    border: 2px solid white;
 }
 
 #restartHint {
@@ -124,6 +125,7 @@ h1 {
     padding: 10px 20px;
     margin: 0 10px;
     cursor: pointer;
+    border: 2px solid white;
 }
 
 #restartBtn, #homeBtnLose {
@@ -131,6 +133,7 @@ h1 {
     padding: 10px 20px;
     margin: 0 10px;
     cursor: pointer;
+    border: 2px solid white;
 }
 
 /* Theme Toggle Button */
@@ -138,20 +141,19 @@ h1 {
     font-size: 20px;
     padding: 15px 30px;
     margin-top: 30px;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    color: #333;
-    border: 2px solid white;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #dc143c 0%, #ff6347 100%);
+    color: white;
+    border: 3px solid white;
+    border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
 }
 
 #ThemeToggle:hover {
-    background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 6px 20px rgba(220, 20, 60, 0.6);
 }
 
 #ThemeToggle:active {
@@ -188,6 +190,7 @@ body.hanukkah #ThemeToggle {
 
 body.hanukkah #ThemeToggle:hover {
     background: linear-gradient(135deg, #E8E8E8 0%, #FFFFFF 100%);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.6);
 }
 
 /* GameTwo square colors */
