@@ -58,7 +58,7 @@ function checkCollision() {
     if (overlap) {
         // Win
         winCount++;
-        speed += 2; // Increase speed after each win
+        speed += 6; // Increase speed after each win
         winDisplay.textContent = 'Wins: ' + winCount;
 
         if (winCount >= 8) {

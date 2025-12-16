@@ -1,7 +1,12 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 20px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
 }
 
 #gameArea {
@@ -9,7 +14,7 @@ body {
     height: 100px;
     border: 2px solid black;
     position: relative;
-    margin: 0 auto;
+    margin: 0;
     background-color: #f0f0f0;
 }
 
