@@ -70,6 +70,7 @@ h1 {
     top: 50%;
     left: 0px;
     transform: translateY(-50%);
+    z-index: 10;
 }
 
 #target {
@@ -113,7 +114,19 @@ h1 {
     margin-bottom: 15px;
 }
 
+#loseButtons {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
 #homeBtn, #playAgainBtn {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+#restartBtn, #homeBtnLose {
     font-size: 18px;
     padding: 10px 20px;
     margin: 0 10px;
@@ -159,10 +172,12 @@ body.hanukkah #Switch {
     background: linear-gradient(135deg, #0056b3 0%, #004a9f 100%);
     border: 3px solid #FFFFFF;
     color: white;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
 }
 
 body.hanukkah #Switch:hover {
     background: linear-gradient(135deg, #004a9f 0%, #0056b3 100%);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
 }
 
 body.hanukkah #ThemeToggle {
@@ -173,4 +188,13 @@ body.hanukkah #ThemeToggle {
 
 body.hanukkah #ThemeToggle:hover {
     background: linear-gradient(135deg, #E8E8E8 0%, #FFFFFF 100%);
+}
+
+/* GameTwo square colors */
+body.hanukkah #mover {
+    background-color: #FFD700;
+}
+
+body.hanukkah #target {
+    background-color: #0056b3;
 }

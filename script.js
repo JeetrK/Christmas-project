@@ -1,5 +1,9 @@
 document.getElementById('Switch').addEventListener('click', function() {
-    window.location.href = 'GameOne.html';
+    if (document.body.classList.contains('hanukkah')) {
+        window.location.href = 'GameTwo.html';
+    } else {
+        window.location.href = 'GameOne.html';
+    }
 });
 
 // Load theme preference from localStorage

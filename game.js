@@ -16,6 +16,9 @@ const restartHint = document.getElementById('restartHint');
 const winButtons = document.getElementById('winButtons');
 const homeBtn = document.getElementById('homeBtn');
 const playAgainBtn = document.getElementById('playAgainBtn');
+const loseButtons = document.getElementById('loseButtons');
+const restartBtnLose = document.getElementById('restartBtn');
+const homeBtnLose = document.getElementById('homeBtnLose');
 
 // Function to move the object
 function move() {
@@ -76,8 +79,7 @@ function checkCollision() {
     } else {
         // Lose
         message.textContent = 'You Lose!';
-        restartBtn.style.display = 'block';
-        restartHint.style.display = 'block';
+        loseButtons.style.display = 'block';
         moving = false;
     }
 }
@@ -91,6 +93,7 @@ function restartGame() {
     restartBtn.style.display = 'none';
     restartHint.style.display = 'none';
     winButtons.style.display = 'none';
+    loseButtons.style.display = 'none';
     moving = true;
     position = 0;
     direction = 1;
@@ -107,9 +110,16 @@ homeBtn.addEventListener('click', function() {
 // Play Again button event
 playAgainBtn.addEventListener('click', restartGame);
 
+// Lose screen buttons
+restartBtnLose.addEventListener('click', restartGame);
+
+homeBtnLose.addEventListener('click', function() {
+    window.location.href = 'index.html';
+});
+
 // Listen for Ctrl key to restart when lose screen is shown
 document.addEventListener('keydown', function(event) {
-    if (event.ctrlKey && restartBtn.style.display === 'block') {
+    if (event.ctrlKey && loseButtons.style.display === 'block') {
         restartGame();
     }
 });
