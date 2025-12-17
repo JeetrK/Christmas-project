@@ -44,6 +44,12 @@ document.getElementById('ThemeToggle').addEventListener('click', function() {
     } else {
         localStorage.setItem('theme', 'christmas');
     }
+    
+    // Spin the page
+    document.body.classList.add('spin');
+    setTimeout(() => {
+        document.body.classList.remove('spin');
+    }, 1000);
 });
 
 // Unlimited button logic

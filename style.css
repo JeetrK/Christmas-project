@@ -228,3 +228,9 @@ body.hanukkah #UnlimitedBtn:hover {
     background: linear-gradient(135deg, #E8E8E8 0%, #FFFFFF 100%);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.6);
 }
+
+/* Spin transition */
+.spin {
+    transform: rotate(360deg);
+    transition: transform 1s ease;
+}
