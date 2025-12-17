@@ -12,6 +12,29 @@
         <div id="mover"></div>
         <div id="target"></div>
     </div>
+    <!-- Initials Entry Screen -->
+<div id="initialsScreen" style="display:none;">
+    <h1>Game Over</h1>
+    <p>Enter Your Initials</p>
+    <input 
+        id="initialsInput" 
+        type="text" 
+        maxlength="3" 
+        style="text-transform:uppercase; font-size:24px;"
+    />
+    <br><br>
+    <button id="submitInitials">Submit</button>
+</div>
+
+<!-- High Scores Screen -->
+<div id="highScoresScreen" style="display:none;">
+    <h1>High Scores</h1>
+    <div id="highScoresList"></div>
+    <br>
+    <button id="restartAfterScores">Play Again</button>
+    <button id="homeAfterScores">Home</button>
+</div>
+
     <div id="winCount">Wins: 0</div>
     <div id="message"></div>
     <div id="winButtons" style="display: none;">
@@ -21,6 +44,17 @@
     <div id="loseButtons" style="display: none;">
         <button id="restartBtn">Restart</button>
         <button id="homeBtnLose">Home</button>
+    </div>
+    <div id="initialsScreen" style="display: none;">
+        <p>Enter your 3 initials:</p>
+        <input type="text" id="initialsInput" maxlength="3" style="text-transform: uppercase;">
+        <button id="submitInitials">Submit</button>
+    </div>
+    <div id="highScoresScreen" style="display: none;">
+        <h2>High Scores</h2>
+        <div id="highScoresList"></div>
+        <button id="restartAfterScores">Restart</button>
+        <button id="homeAfterScores">Home</button>
     </div>
     <button id="restart" style="display: none;">Restart</button>
     <small id="restartHint" style="display: none;">Or hit ctrl to restart</small>

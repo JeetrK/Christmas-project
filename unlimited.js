@@ -1,119 +1,125 @@
-// Game variables
 let winCount = 0;
 let moving = true;
-let direction = 1; // 1 for right, -1 for left
+let direction = 1;
 let speed = 5;
-let position = 0; // current left position of the mover
+let position = 0;
 
-// Get DOM elements
+/* ---------- HIGH SCORES ---------- */
+
+// Load score.json ONCE if localStorage empty
+async function loadHighScores() {
+    if (!localStorage.getItem('highScores')) {
+        try {
+            const res = await fetch('score.json');
+            const data = await res.json();
+            localStorage.setItem('highScores', JSON.stringify(data));
+        } catch {
+            localStorage.setItem('highScores', JSON.stringify([]));
+        }
+    }
+}
+loadHighScores();
+
+function saveHighScore(initials, score) {
+    let scores = JSON.parse(localStorage.getItem('highScores'));
+    scores.push({ initials, score });
+    scores.sort((a, b) => b.score - a.score);
+    localStorage.setItem('highScores', JSON.stringify(scores));
+}
+
+function showHighScores() {
+    initialsScreen.style.display = 'none';
+    highScoresScreen.style.display = 'flex';
+    highScoresList.innerHTML = '';
+
+    const scores = JSON.parse(localStorage.getItem('highScores'));
+    scores.forEach((s, i) => {
+        const div = document.createElement('div');
+        div.textContent = `${i + 1}. ${s.initials} - ${s.score}`;
+        highScoresList.appendChild(div);
+    });
+}
+
+/* ---------- DOM ---------- */
+
 const mover = document.getElementById('mover');
 const target = document.getElementById('target');
 const gameArea = document.getElementById('gameArea');
 const winDisplay = document.getElementById('winCount');
 const message = document.getElementById('message');
-const restartBtn = document.getElementById('restart');
-const restartHint = document.getElementById('restartHint');
-const winButtons = document.getElementById('winButtons');
-const homeBtn = document.getElementById('homeBtn');
-const playAgainBtn = document.getElementById('playAgainBtn');
-const loseButtons = document.getElementById('loseButtons');
-const restartBtnLose = document.getElementById('restartBtn');
-const homeBtnLose = document.getElementById('homeBtnLose');
 
-// Function to move the object
+const initialsScreen = document.getElementById('initialsScreen');
+const initialsInput = document.getElementById('initialsInput');
+const submitInitials = document.getElementById('submitInitials');
+
+const highScoresScreen = document.getElementById('highScoresScreen');
+const highScoresList = document.getElementById('highScoresList');
+const restartAfterScores = document.getElementById('restartAfterScores');
+const homeAfterScores = document.getElementById('homeAfterScores');
+
+/* ---------- GAME LOOP ---------- */
+
 function move() {
     if (moving) {
-        // Update position
         position += direction * speed;
 
-        // Check for bouncing off edges
-        if (position <= 0) {
-            position = 0;
-            direction = 1; // go right
-        } else if (position >= gameArea.clientWidth - mover.clientWidth) {
-            position = gameArea.clientWidth - mover.clientWidth;
-            direction = -1; // go left
-        }
+        if (position <= 0) direction = 1;
+        if (position >= gameArea.clientWidth - mover.clientWidth) direction = -1;
 
-        // Update mover position
         mover.style.left = position + 'px';
     }
-
-    // Continue animation
     requestAnimationFrame(move);
 }
-
-// Start the movement
 move();
 
-// Listen for space bar to stop
-document.addEventListener('keydown', function(event) {
-    if (event.code === 'Space' && moving) {
+document.addEventListener('keydown', e => {
+    if (e.code === 'Space' && moving) {
         moving = false;
         checkCollision();
     }
 });
 
-// Function to check if mover overlaps with target
 function checkCollision() {
-    const moverRect = mover.getBoundingClientRect();
-    const targetRect = target.getBoundingClientRect();
+    const m = mover.getBoundingClientRect();
+    const t = target.getBoundingClientRect();
 
-    // Check for horizontal overlap (since they are at same height)
-    const overlap = moverRect.left < targetRect.right && moverRect.right > targetRect.left;
-
-    if (overlap) {
-        // Win
+    if (m.left < t.right && m.right > t.left) {
         winCount++;
-        speed += 2; // Increase speed after each win
-        winDisplay.textContent = 'Wins: ' + winCount;
-
-        // Continue moving for next attempt (game does not end)
+        speed += 2;
+        winDisplay.textContent = `Wins: ${winCount}`;
         moving = true;
     } else {
-        // Lose
         message.textContent = 'You Lose!';
-        loseButtons.style.display = 'block';
-        moving = false;
+        initialsScreen.style.display = 'flex';
     }
 }
 
-// Restart function
+/* ---------- INITIALS ---------- */
+
+submitInitials.addEventListener('click', () => {
+    const initials = initialsInput.value.toUpperCase();
+    if (initials.length !== 3) {
+        alert('Enter exactly 3 initials');
+        return;
+    }
+    saveHighScore(initials, winCount);
+    showHighScores();
+});
+
+/* ---------- RESTART / HOME ---------- */
+
 function restartGame() {
     winCount = 0;
-    speed = 5; // Reset speed
-    winDisplay.textContent = 'Wins: 0';
-    message.textContent = '';
-    restartBtn.style.display = 'none';
-    restartHint.style.display = 'none';
-    winButtons.style.display = 'none';
-    loseButtons.style.display = 'none';
-    moving = true;
+    speed = 5;
     position = 0;
     direction = 1;
+    moving = true;
+
+    winDisplay.textContent = 'Wins: 0';
+    message.textContent = '';
+    initialsScreen.style.display = 'none';
+    highScoresScreen.style.display = 'none';
 }
 
-// Restart button event
-restartBtn.addEventListener('click', restartGame);
-
-// Home button event
-homeBtn.addEventListener('click', function() {
-    window.location.href = 'index.html';
-});
-
-// Play Again button event
-playAgainBtn.addEventListener('click', restartGame);
-
-// Lose screen buttons
-restartBtnLose.addEventListener('click', restartGame);
-
-homeBtnLose.addEventListener('click', function() {
-    window.location.href = 'index.html';
-});
-
-// Listen for Ctrl key to restart when lose screen is shown
-document.addEventListener('keydown', function(event) {
-    if (event.ctrlKey && loseButtons.style.display === 'block') {
-        restartGame();
-    }
-});
+restartAfterScores.onclick = restartGame;
+homeAfterScores.onclick = () => location.href = 'index.html';

@@ -86,6 +86,8 @@ h1 {
 #winCount {
     font-size: 24px;
     margin-top: 20px;
+    font-family: 'Impact', sans-serif;
+    color: red;
 }
 
 #message {
@@ -193,13 +195,8 @@ body.hanukkah #ThemeToggle:hover {
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.6);
 }
 
-/* GameTwo square colors */
-body.hanukkah #mover {
-    background-color: #FFD700;
-}
-
-body.hanukkah #target {
-    background-color: #0056b3;
+body.hanukkah #winCount {
+    color: yellow;
 }
 
 #UnlimitedBtn {
