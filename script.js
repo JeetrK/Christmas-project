@@ -1,15 +1,18 @@
 // Play button
 document.getElementById('Switch').addEventListener('click', function() {
-    if (document.body.classList.contains('hanukkah')) {
-        window.location.href = 'GameTwo.html';
-    } else {
-        // Check if Unlimited mode is active
-        if (window.unlimitedMode) {
-            window.location.href = 'unlimited.html';
+    document.body.classList.add('explode');
+    setTimeout(() => {
+        if (document.body.classList.contains('hanukkah')) {
+            window.location.href = 'GameTwo.html';
         } else {
-            window.location.href = 'GameOne.html';
+            // Check if Unlimited mode is active
+            if (window.unlimitedMode) {
+                window.location.href = 'unlimited.html';
+            } else {
+                window.location.href = 'GameOne.html';
+            }
         }
-    }
+    }, 1000);
 });
 
 // Load theme preference from localStorage
