@@ -65,22 +65,73 @@ h1 {
 #mover {
     width: 50px;
     height: 50px;
-    background-color: red;
+    background-color: gold;
     position: absolute;
     top: 50%;
     left: 0px;
     transform: translateY(-50%);
     z-index: 10;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 
 #target {
     width: 50px;
     height: 50px;
-    background-color: green;
+    background-color: gold;
     position: absolute;
     top: 50%;
     left: 375px; /* Center of the game area */
     transform: translateY(-50%);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+#tree {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    position: absolute;
+    top: calc(50% + 20px);
+    left: calc(50% - 25px);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+#tree2 {
+    width: 70px;
+    height: 50px;
+    background-color: green;
+    position: absolute;
+    top: calc(50% + 70px);
+    left: calc(50% - 35px);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+#tree3 {
+    width: 90px;
+    height: 50px;
+    background-color: green;
+    position: absolute;
+    top: calc(50% + 120px);
+    left: calc(50% - 45px);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+#tree4 {
+    width: 110px;
+    height: 50px;
+    background-color: green;
+    position: absolute;
+    top: calc(50% + 170px);
+    left: calc(50% - 55px);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+#trunk {
+    width: 25px;
+    background-color: brown;
+    position: absolute;
+    top: calc(50% + 220px);
+    left: calc(50% - 12.5px);
+    bottom: 0;
 }
 
 #winCount {
@@ -195,8 +246,25 @@ body.hanukkah #ThemeToggle:hover {
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.6);
 }
 
-body.hanukkah #winCount {
-    color: yellow;
+body.hanukkah #target {
+    background-color: orange;
+    clip-path: polygon(50% 0%, 30% 30%, 20% 70%, 50% 100%, 80% 70%, 70% 30%);
+}
+
+body.hanukkah #mover {
+    background-color: orange;
+    clip-path: polygon(50% 0%, 30% 30%, 20% 70%, 50% 100%, 80% 70%, 70% 30%);
+}
+
+body.hanukkah #flame-base {
+    width: 20px;
+    background: repeating-linear-gradient(to bottom, white 0px, white 10px, blue 10px, blue 20px);
+    border: 3px solid black;
+    position: absolute;
+    top: calc(50% + 25px);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
 }
 
 #UnlimitedBtn {
@@ -244,3 +312,4 @@ body.hanukkah #UnlimitedBtn:hover {
     0% { transform: scale(1) rotate(0deg); opacity: 1; }
     50% { transform: scale(1.2) rotate(180deg); opacity: 0.5; }
     100% { transform: scale(0) rotate(360deg); opacity: 0; }
+}
